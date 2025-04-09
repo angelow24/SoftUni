@@ -1,20 +1,22 @@
-start_interval = int(input())
-end_interval = int(input())
-magic_number = int(input())
-combination = 0
-magic_number_found = False
+jury_number = int(input())
+presentation = input()
+total_grades = 0
+total_sum_grades = 0
 
-for current_number in range(start_interval, end_interval + 1):
-    for second_number in range(start_interval, end_interval + 1):
-        combination += 1
+while presentation != 'Finish':
+    presentation_grade = 0
+    for _ in range(1, jury_number + 1):
+        jury_evaluation = float(input())
+        total_grades += 1
+        presentation_grade += jury_evaluation
+        total_sum_grades += jury_evaluation
 
-        if current_number + second_number == magic_number:
-            print(f'Combination N:{combination} ({current_number} + {second_number} = {magic_number})')
-            magic_number_found = True
-            break
-    if magic_number_found:
-        break
+    avg_presentation_grade = presentation_grade / jury_number
+    print(f'{presentation} - {avg_presentation_grade:.2f}.')
 
-else:
-    print(f'{combination} combinations - neither equals {magic_number}')
+    presentation = input()
+
+avg_total = total_sum_grades / total_grades
+print(f"Student's final assessment is {avg_total:.2f}.")
+
 
